@@ -1,5 +1,5 @@
 # get base SDK Image from Microsoft
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build-env
 WORKDIR /app
 
 # Copy the CSPROJ file and restore any dependencies (via NUGET0)
@@ -11,7 +11,7 @@ COPY . ./
 RUN dotnet publish -c Release -o /out
 
 # Generate runtime image
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
